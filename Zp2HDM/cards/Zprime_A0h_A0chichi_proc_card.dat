@@ -1,4 +1,4 @@
-import model Zp2HDM_v1.2
+import model Zp2HDM
 generate p p > Zp, (Zp > h A0, A0 > n1 n1~)
 output Zprime_A0h_A0chichi -nojpeg
 
