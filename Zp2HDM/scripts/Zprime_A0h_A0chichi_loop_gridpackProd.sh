@@ -31,17 +31,17 @@ do
 #	echo $diffmass
 	if [[ $A0mass -lt $diffmass ]]
 	then
-	 iteration=$(( iteration + 1 ))
+	    iteration=$(( iteration + 1 ))
 
-	echo ""
-	echo "Producing gridpacks for Zprime mass = "$Zpmass" GeV"
-	echo "Producing gridpacks for A0 mass = "$A0mass" GeV "
-	echo ""
-	process=${name}_MZP${Zpmass}_M${A0mass}
-	dir=$CARDSDIR/$name/$process
-	ls $dir
-	bsub -q $queue $PWD/runJob.sh $PWD $process $dir
-
+	    echo ""
+	    echo "Producing gridpacks for Zprime mass = "$Zpmass" GeV"
+	    echo "Producing gridpacks for A0 mass = "$A0mass" GeV "
+	    echo ""
+	    process=${name}_MZP${Zpmass}_M${A0mass}
+	    dir=$CARDSDIR/$name/$process
+	    ls $dir
+	    bsub -q $queue $PWD/runJob.sh $PWD $process $dir
+	    
 	fi
 	A0mass=$(( A0mass + 100 ))
     done

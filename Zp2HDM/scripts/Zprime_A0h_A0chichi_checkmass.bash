@@ -1,19 +1,19 @@
 #!/bin/bash
 
 scriptname=`basename $0`
-EXPECTED_ARGS=2
+EXPECTED_ARGS=1
 
 if [ $# -ne $EXPECTED_ARGS ]
 then
-    echo "Usage: $scriptname processName EOSDirVersion"
-    echo "Example: ./$scriptname Zprime_A0h_A0chichi v1"
+    echo "Usage: $scriptname EOSDirVersion"
+    echo "Example: ./$scriptname v1"
     exit 1
 fi
 
 
 
-process=$1
-version=$2
+process=Zprime_A0h_A0chichi
+version=$1
 #dir=/store/group/phys_generator/cvmfs/gridpacks/slc6_amd64_gcc481/13TeV/madgraph/V5_2.2.2/monoHiggs/${process}/$version
 dir=/cvmfs/cms.cern.ch/phys_generator/gridpacks/slc6_amd64_gcc481/13TeV/madgraph/V5_2.2.2/monoHiggs/${process}/$version 
 
@@ -34,10 +34,10 @@ do
 	if [[ $A0mass -lt $diffmass ]]
 	then
 	    iteration=$(( iteration + 1 ))
-	echo ""
-	echo ""
-	file=${name}_MZP${Zpmass}_M${A0mass}_tarball.tar.xz
-	cmsLs $dir/$file
+	    echo ""
+	    echo ""
+	    file=${name}_MZP${Zpmass}_M${A0mass}_tarball.tar.xz
+	    cmsLs $dir/$file
 	fi
 	A0mass=$(( A0mass + 100 ))
     done
