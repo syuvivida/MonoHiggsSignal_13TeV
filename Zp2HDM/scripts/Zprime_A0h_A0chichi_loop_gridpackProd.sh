@@ -37,7 +37,7 @@ do
 	    echo "Producing gridpacks for Zprime mass = "$Zpmass" GeV"
 	    echo "Producing gridpacks for A0 mass = "$A0mass" GeV "
 	    echo ""
-	    process=${name}_MZp${Zpmass}_M${A0mass}
+	    process=${name}_MZp${Zpmass}_MA0${A0mass}
 	    dir=$CARDSDIR/$name/$process
 	    ls $dir
 	    bsub -q $queue $PWD/runJob.sh $PWD $process $dir

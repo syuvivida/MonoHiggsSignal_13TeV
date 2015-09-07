@@ -36,7 +36,7 @@ do
 	    iteration=$(( iteration + 1 ))
 	    echo ""
 	    echo ""
-	    file=${name}_MZp${Zpmass}_M${A0mass}_tarball.tar.xz
+	    file=${name}_MZp${Zpmass}_MA0${A0mass}_tarball.tar.xz
 	    cmsLs $dir/$file
 	fi
 	A0mass=$(( A0mass + 100 ))

@@ -6,7 +6,7 @@ EXPECTED_ARGS=2
 if [ $# -ne $EXPECTED_ARGS ]
 then
     echo "Usage: $scriptname foldername EOSDirVersion"
-    echo "Example: ./$scriptname Zprime_A0h_A0chichi_MZp1000_M300 v1"
+    echo "Example: ./$scriptname Zprime_A0h_A0chichi_MZp1000_MA0300 v1"
     exit 1
 fi
 
