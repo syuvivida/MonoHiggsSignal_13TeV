@@ -29,7 +29,7 @@ do
     iteration=$(( iteration + 1 ))
     echo ""
     echo ""
-    file=${name}_MZP${Zpmass}_tarball.tar.xz
+    file=${name}_MZp${Zpmass}_tarball.tar.xz
     cmsLs $dir/$file
     Zpmass=$(( Zpmass + 200 ))
 done

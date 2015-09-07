@@ -57,7 +57,7 @@ do
     echo "Producing cards for Zprime mass = "$Zpmass" GeV"
     echo "Producing cards for A0 mass = "$A0mass" GeV "
     echo ""
-    newname=${name}_MZP${Zpmass}
+    newname=${name}_MZp${Zpmass}
     mkdir $topdir/$newname
     dir=$CARDSDIR/$name/$newname
     sed -e 's/'$name'/'${newname}'/g' $CARDSDIR/${name}_proc_card.dat > $dir/${newname}_proc_card.dat
