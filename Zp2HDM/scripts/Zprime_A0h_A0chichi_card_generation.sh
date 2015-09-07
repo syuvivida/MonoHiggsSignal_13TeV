@@ -45,9 +45,8 @@ topdir=$CARDSDIR/$name
 mkdir $topdir
 Zpmass=600
 last_Zpmass=1400
-
-
 chimass=100
+iteration=0
 
 while [[ $Zpmass -le $last_Zpmass ]]; 
 do
@@ -59,6 +58,7 @@ do
 #	echo $diffmass
 	if [[ $A0mass -lt $diffmass ]]
 	then
+	 iteration=$(( iteration + 1 ))
 
 	echo ""
 	echo "Producing cards for Zprime mass = "$Zpmass" GeV"
@@ -77,4 +77,4 @@ do
 done
 
 
-
+echo "There are "$iteration" mass points in total."
