@@ -67,7 +67,7 @@ do
 	newname=${name}_MZP${Zpmass}_M${A0mass}
 	mkdir $topdir/$newname
 	dir=$CARDSDIR/$name/$newname
-	sed -e 's/'$name'/'${newname}' -nojpeg\n/g' $CARDSDIR/${name}_proc_card.dat > $dir/${newname}_proc_card.dat
+	sed -e 's/'$name'/'${newname}'/g' $CARDSDIR/${name}_proc_card.dat > $dir/${newname}_proc_card.dat
 	sed -e 's/MZP/'$Zpmass'/g' -e 's/MA0/'$A0mass'/g' $CARDSDIR/$custom > $dir/${newname}_customizecards.dat
 	cp $CARDSDIR/run_card.dat $dir/${newname}_run_card.dat
 	fi
