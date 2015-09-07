@@ -1,0 +1,8 @@
+set param_card mass 32 MZP
+set param_card mass 26 MA0
+set param_card mass 27 MA0
+set param_card mass 28 MA0
+set param_card ZpINPUTS 1 1
+set param_card ZpINPUTS 2 0.8
+set param_card DECAY 32 Auto
+set param_card DECAY 28 Auto
