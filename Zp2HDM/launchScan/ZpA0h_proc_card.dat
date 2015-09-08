@@ -1,5 +1,5 @@
 import model Zp2HDM
-generate p p > Zp, (Zp > h A0, A0 > n1 n1~)
+generate p p > Zp > h A0, A0 > n1 n1~
 output FOLDERNAME -nojpeg
 launch FOLDERNAME
 	set MZp MASSZP

@@ -1,7 +1,7 @@
 import model Zp2HDM
 define vl = ve vm vt
 define vl~ = ve~ vm~ vt~
-generate p p > Zp, (Zp > h z, z > vl vl~)
+generate p p > Zp > h z, z > vl vl~
 output FOLDERNAME -nojpeg
 launch FOLDERNAME
 	set MZp MASSZP
