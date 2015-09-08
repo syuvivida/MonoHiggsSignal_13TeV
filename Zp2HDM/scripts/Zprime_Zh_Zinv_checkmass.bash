@@ -17,22 +17,21 @@ version=$1
 #dir=/store/group/phys_generator/cvmfs/gridpacks/slc6_amd64_gcc481/13TeV/madgraph/V5_2.2.2/monoHiggs/${process}/$version
 dir=/cvmfs/cms.cern.ch/phys_generator/gridpacks/slc6_amd64_gcc481/13TeV/madgraph/V5_2.2.2/monoHiggs/${process}/$version 
 
-Zpmass=600
-last_Zpmass=1400
-
-chimass=100
 iteration=0
-A0mass=300
+massfile=inputs/input_zprime
+lastpoint=`cat $massfile | wc -l`
+echo "There are "$lastpoint" mass points"
 
-while [[ $Zpmass -le $last_Zpmass ]]; 
+while [ $iteration -lt $lastpoint ]; 
 do
     iteration=$(( iteration + 1 ))
+    Zpmass=(`head -n $iteration $massfile  | tail -1 | awk '{print $1}'`)
+    file=${process}_MZp${Zpmass}_tarball.tar.xz
     echo ""
     echo ""
-    file=${name}_MZp${Zpmass}_tarball.tar.xz
     cmsLs $dir/$file
-    Zpmass=$(( Zpmass + 200 ))
 done
+
 
 
 echo "There are "$iteration" mass points in total."

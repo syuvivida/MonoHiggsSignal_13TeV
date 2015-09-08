@@ -16,15 +16,16 @@ CARDSDIR=$2
 
 name=Zprime_Zh_Zinv
 
-Zpmass=600
-last_Zpmass=1400
-chimass=100
 iteration=0
-A0mass=300
+massfile=inputs/input_zprime
+lastpoint=`cat $massfile | wc -l`
+echo "There are "$lastpoint" mass points"
 
-while [[ $Zpmass -le $last_Zpmass ]]; 
+
+while [ $iteration -lt $lastpoint ]; 
 do
-    iteration=$(( iteration + 1 ))    
+    iteration=$(( iteration + 1 ))
+    Zpmass=(`head -n $iteration $massfile  | tail -1 | awk '{print $1}'`) 
     echo ""
     echo "Producing gridpacks for Zprime mass = "$Zpmass" GeV"
     echo ""
@@ -32,10 +33,8 @@ do
     dir=$CARDSDIR/$name/$process
     ls $dir
     bsub -q $queue $PWD/runJob.sh $PWD $process $dir
-    
-    Zpmass=$(( Zpmass + 200 ))
-    
 done
+
 
 
 echo "There are "$iteration" mass points in total."

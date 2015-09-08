@@ -43,28 +43,29 @@ fi
 ########################
 topdir=$CARDSDIR/$name
 mkdir $topdir
-Zpmass=600
-last_Zpmass=1400
-chimass=100
-iteration=0
-A0mass=300
 
-while [[ $Zpmass -le $last_Zpmass ]]; 
+iteration=0
+massfile=inputs/input_zprime
+lastpoint=`cat $massfile | wc -l`
+echo "There are "$lastpoint" mass points"
+
+A0massfile=inputs/input_a0
+A0mass=(`head -n 1 $A0massfile  | tail -1 | awk '{print $1}'`)
+A0width=(`head -n 1 $A0massfile  | tail -1 | awk '{print $2}'`)
+
+while [ $iteration -lt $lastpoint ]; 
 do
     iteration=$(( iteration + 1 ))
-
-    echo ""
+    Zpmass=(`head -n $iteration $massfile  | tail -1 | awk '{print $1}'`)
+    Zpwidth=(`head -n $iteration $massfile  | tail -1 | awk '{print $2}'`)
     echo "Producing cards for Zprime mass = "$Zpmass" GeV"
-    echo "Producing cards for A0 mass = "$A0mass" GeV "
     echo ""
     newname=${name}_MZp${Zpmass}
     mkdir $topdir/$newname
     dir=$CARDSDIR/$name/$newname
     sed -e 's/'$name'/'${newname}'/g' $CARDSDIR/${name}_proc_card.dat > $dir/${newname}_proc_card.dat
-    sed -e 's/MZP/'$Zpmass'/g' -e 's/MA0/'$A0mass'/g' $CARDSDIR/$custom > $dir/${newname}_customizecards.dat
+    sed -e 's/MZP/'$Zpmass'/g' -e 's/MA0/'$A0mass'/g' -e 's/WZP/'$Zpwidth'/g' -e 's/WA0/'$A0width'/g' $CARDSDIR/$custom > $dir/${newname}_customizecards.dat
     cp $CARDSDIR/run_card.dat $dir/${newname}_run_card.dat
-
-    Zpmass=$(( Zpmass + 200 ))
 done
 
 
