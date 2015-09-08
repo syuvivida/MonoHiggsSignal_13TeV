@@ -17,9 +17,6 @@ fi
 
 
 
-iteration=0
-
-iterZp=0
 Zpmassfile=inputs/input_zprime
 lastZppoint=`cat $Zpmassfile | wc -l`
 echo "There are "$lastZppoint" Zprime mass points"
@@ -30,6 +27,8 @@ echo "There are "$lastA0point" A0 mass points"
 chimass=100
 
 
+iteration=0
+iterZp=0
 while [ $iterZp -lt $lastZppoint ]; 
 do
     iterZp=$(( iterZp + 1 ))

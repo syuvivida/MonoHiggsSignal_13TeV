@@ -16,23 +16,35 @@ CARDSDIR=$2
 
 name=Zprime_A0h_A0chichi
 
-Zpmass=600
-last_Zpmass=1400
-chimass=100
-iteration=0
 
-while [[ $Zpmass -le $last_Zpmass ]]; 
+
+
+Zpmassfile=inputs/input_zprime
+lastZppoint=`cat $Zpmassfile | wc -l`
+echo "There are "$lastZppoint" Zprime mass points"
+
+A0massfile=inputs/input_a0
+lastA0point=`cat $A0massfile | wc -l`
+echo "There are "$lastA0point" A0 mass points"
+chimass=100
+
+
+iteration=0
+iterZp=0
+while [ $iterZp -lt $lastZppoint ]; 
 do
-    A0mass=300
-    last_A0mass=800
-    while [[ $A0mass -le $last_A0mass ]]; 
+    iterZp=$(( iterZp + 1 ))
+    Zpmass=(`head -n $iterZp $Zpmassfile  | tail -1 | awk '{print $1}'`)    
+    iterA0=0
+    while [ $iterA0 -lt $lastA0point ]; 
     do
+	iterA0=$(( iterA0 + 1 ))
+	A0mass=(`head -n $iterA0 $A0massfile  | tail -1 | awk '{print $1}'`) 
 	diffmass=$(( Zpmass - $chimass ))
-#	echo $diffmass
+	
 	if [[ $A0mass -lt $diffmass ]]
 	then
 	    iteration=$(( iteration + 1 ))
-
 	    echo ""
 	    echo "Producing gridpacks for Zprime mass = "$Zpmass" GeV"
 	    echo "Producing gridpacks for A0 mass = "$A0mass" GeV "
@@ -41,12 +53,10 @@ do
 	    dir=$CARDSDIR/$name/$process
 	    ls $dir
 	    bsub -q $queue $PWD/runJob.sh $PWD $process $dir
-	    
 	fi
-	A0mass=$(( A0mass + 100 ))
     done
-	Zpmass=$(( Zpmass + 200 ))
 done
 
+	    
 
 echo "There are "$iteration" mass points in total."

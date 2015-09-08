@@ -15,7 +15,6 @@ if [ ! -e $CARDSDIR/${name}_proc_card.dat ]; then
     exit 1;
 fi
 
-iteration=0
 massfile=inputs/input_zprime
 lastpoint=`cat $massfile | wc -l`
 echo "There are "$lastpoint" mass points"
@@ -24,6 +23,7 @@ A0massfile=inputs/input_a0
 A0mass=(`head -n 1 $A0massfile  | tail -1 | awk '{print $1}'`)
 
 
+iteration=0
 while [ $iteration -lt $lastpoint ]; 
 do
     iteration=$(( iteration + 1 ))
