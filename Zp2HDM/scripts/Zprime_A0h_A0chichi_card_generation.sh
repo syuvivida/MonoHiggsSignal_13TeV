@@ -62,11 +62,12 @@ while [ $iterZp -lt $lastZppoint ];
 do
     iterZp=$(( iterZp + 1 ))  
     Zpmass=(`head -n $iterZp $Zpmassfile  | tail -1 | awk '{print $1}'`)    
-    Zpwidth=(`head -n $iterZp $Zpmassfile  | tail -1 | awk '{print $2}'`)    
     iterA0=0
     while [ $iterA0 -lt $lastA0point ]; 
     do
 	iterA0=$(( iterA0 + 1 ))
+	iterZwidth=$(( iterA0 + 1 ))
+	Zpwidth=(`head -n $iterZp $Zpmassfile  | tail -1 | awk -v my_var=$iterZwidth '{print $my_var}'`)    
 	A0mass=(`head -n $iterA0 $A0massfile  | tail -1 | awk '{print $1}'`) 
 	A0width=(`head -n $iterA0 $A0massfile  | tail -1 | awk '{print $2}'`) 
 	diffmass=$(( Zpmass - $hmass ))
