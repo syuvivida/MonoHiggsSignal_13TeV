@@ -3,10 +3,10 @@
 scriptname=`basename $0`
 
 # name of the run
-name=hzpzp
+name=BaryonicZprime
 
 ## customercards
-custom=hzpzp_customizecards.dat 
+custom=BaryonicZprime_customizecards.dat 
 
 export PRODHOME=`pwd`
 CARDSDIR=${PRODHOME}/cards
