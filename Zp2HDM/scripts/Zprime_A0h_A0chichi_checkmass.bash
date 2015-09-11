@@ -25,7 +25,7 @@ echo "There are "$lastZppoint" Zprime mass points"
 A0massfile=inputs/input_a0
 lastA0point=`cat $A0massfile | wc -l`
 echo "There are "$lastA0point" A0 mass points"
-chimass=100
+hmass=125
 
 
 iteration=0
@@ -40,7 +40,7 @@ do
     do
 	iterA0=$(( iterA0 + 1 ))
 	A0mass=(`head -n $iterA0 $A0massfile  | tail -1 | awk '{print $1}'`) 
-	diffmass=$(( Zpmass - $chimass ))
+	diffmass=$(( Zpmass - $hmass ))
 	
 	if [[ $A0mass -lt $diffmass ]]
 	then
