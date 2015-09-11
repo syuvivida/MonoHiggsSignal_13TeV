@@ -1,0 +1,4 @@
+import model Higgs_hzpzp_MZp10000_MChi150
+generate p p > h chi chi~
+output hzpzp_MZp10000_MChi150 -nojpeg
+

@@ -52,7 +52,6 @@ echo "There are "$lastZppoint" Zprime mass points"
 chimassfile=inputs/input_chi
 lastchipoint=`cat $chimassfile | wc -l`
 echo "There are "$lastchipoint" chi mass points"
-#chimass=100
 
 iteration=0
 iterZp=0
@@ -61,33 +60,32 @@ while [ $iterZp -lt $lastZppoint ];
 do
     iterZp=$(( iterZp + 1 ))  
     Zpmass=(`head -n $iterZp $Zpmassfile  | tail -1 | awk '{print $1}'`)    
-    Zpwidth=(`head -n $iterZp $Zpmassfile  | tail -1 | awk '{print $2}'`)    
     iterchi=0
+
     while [ $iterchi -lt $lastchipoint ]; 
     do
 	iterchi=$(( iterchi + 1 ))
-	chimass=(`head -n $iterchi $chimassfile  | tail -1 | awk '{print $1}'`) 
-	#A0width=(`head -n $iterA0 $A0massfile  | tail -1 | awk '{print $2}'`) 
-	#diffmass=$(( Zpmass - $chimass ))
+	iterZwidth=$(( iterchi + 1 ))
+        Zpwidth=(`head -n $iterZp $Zpmassfile  | tail -1 | awk -v my_var=$iterZwidth '{print $my_var}'`)
+        chimass=(`head -n $iterchi $chimassfile  | tail -1 | awk '{print $1}'`) 
 	
-	#if [[ $A0mass -lt $diffmass ]]
-	#then
+	if (( $(echo "$Zpwidth > 0.0" | bc -l) ))
+        #if [[ $Zpwidth -gt 0.0 ]]
+	then
 	    iteration=$(( iteration + 1 ))
 
 	    echo ""
 	    echo "Producing cards for Zprime mass = "$Zpmass" GeV"
 	    echo "Producing cards for chi mass = "$chimass" GeV "
 	    echo ""
-	    newname=${name}_MZp${Zpmass}_MA0${chimass}
+	    newname=${name}_MZp${Zpmass}_MChi${chimass}
 	    mkdir $topdir/$newname
 	    dir=$CARDSDIR/$name/$newname
 	    sed -e 's/'$name'/'${newname}'/g' $CARDSDIR/${name}_proc_card.dat > $dir/${newname}_proc_card.dat
 	    sed -e 's/MZP/'$Zpmass'/g' -e 's/MCHI/'$chimass'/g' -e 's/WZP/'$Zpwidth'/g' $CARDSDIR/$custom > $dir/${newname}_customizecards.dat
 	    cp $CARDSDIR/run_card.dat $dir/${newname}_run_card.dat
-	#fi
+	fi
     done
 done
 
-
 echo "There are "$iteration" mass points in total."
-

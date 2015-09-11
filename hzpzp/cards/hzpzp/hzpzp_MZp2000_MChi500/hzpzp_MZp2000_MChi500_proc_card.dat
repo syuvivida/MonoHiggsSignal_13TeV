@@ -1,0 +1,4 @@
+import model Higgs_hzpzp_MZp2000_MChi500
+generate p p > h chi chi~
+output hzpzp_MZp2000_MChi500 -nojpeg
+
