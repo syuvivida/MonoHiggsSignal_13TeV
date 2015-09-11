@@ -1,0 +1,14 @@
+import model Zp2HDM
+define vl = ve vm vt
+define vl~ = ve~ vm~ vt~
+generate p p > Zp > h z, z > vl vl~
+output FOLDERNAME -nojpeg
+launch FOLDERNAME
+	set MZp MASSZP
+	set MA0 MASSA0
+	set MHP MASSA0
+	set MHN MASSA0
+	set tb 1
+	set gz 0.8
+	set WZP Auto
+	set WA0 Auto
