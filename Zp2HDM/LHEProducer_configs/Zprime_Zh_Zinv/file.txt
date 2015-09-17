@@ -1,8 +1,0 @@
-Zprime_Zh_Zinv_MZp600_13TeV-madgraph_cff.py
-Zprime_Zh_Zinv_MZp800_13TeV-madgraph_cff.py
-Zprime_Zh_Zinv_MZp1000_13TeV-madgraph_cff.py
-Zprime_Zh_Zinv_MZp1200_13TeV-madgraph_cff.py
-Zprime_Zh_Zinv_MZp1400_13TeV-madgraph_cff.py
-Zprime_Zh_Zinv_MZp1700_13TeV-madgraph_cff.py
-Zprime_Zh_Zinv_MZp2000_13TeV-madgraph_cff.py
-Zprime_Zh_Zinv_MZp2500_13TeV-madgraph_cff.py
