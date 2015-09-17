@@ -12,10 +12,11 @@ generator = cms.EDFilter("Pythia8HadronizerFilter",
         pythia8CommonSettingsBlock,
         pythia8CUEP8M1SettingsBlock,
         processParameters = cms.vstring(
+            'SLHA:useDecayTable = off',  # Use pythia8s own decay mode instead of decays defined in LH accord
             '25:m0 = 125.0', 
             '23:mMin = 0.05',                 # Solve problem with mZ cut
             '25:onMode = off',
-            '25:onIfMatch = 23 23',           # turn ON H->ZZ
+            '25:onIfAll = 23 23',           # turn ON H->ZZ
             '23:onMode = off',                # turn OFF all Z decays
             '23:onIfAny = 11 13 15'           # turn ON Z->ll
 

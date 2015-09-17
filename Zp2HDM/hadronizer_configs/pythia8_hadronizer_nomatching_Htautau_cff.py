@@ -12,6 +12,7 @@ generator = cms.EDFilter("Pythia8HadronizerFilter",
         pythia8CommonSettingsBlock,
         pythia8CUEP8M1SettingsBlock,
         processParameters = cms.vstring(
+            'SLHA:useDecayTable = off',  # Use pythia8s own decay mode instead of decays defined in LH accord
             '25:m0 = 125.0',
             '25:onMode = off',
             '25:onIfMatch = 15 -15'
