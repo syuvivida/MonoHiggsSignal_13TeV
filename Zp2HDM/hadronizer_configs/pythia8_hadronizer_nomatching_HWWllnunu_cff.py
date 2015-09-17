@@ -14,10 +14,10 @@ generator = cms.EDFilter("Pythia8HadronizerFilter",
         processParameters = cms.vstring(
             '25:m0 = 125.0', 
             '25:onMode = off',
-            '25:onIfMatch = 24 -24',           # turn ON H->ZZ
+            '25:onIfMatch = 24 -24',           # turn ON H->WW
             '24:mMin = 0.05',                  #  
-            '24:onMode = off',                 # turn OFF all Z decays
-            '24:onIfAny = 11 13 15 12 14 16'   # turn ON Z->ll
+            '24:onMode = off',                 # turn OFF all W decays
+            '24:onIfAny = 11 13 15 12 14 16'   # turn ON W->lnu
 
             ),
         parameterSets = cms.vstring('pythia8CommonSettings',
